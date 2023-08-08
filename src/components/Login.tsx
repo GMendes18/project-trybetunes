@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { createUser } from '../services/userAPI'; // Importando a função createUser
+import { useNavigate } from 'react-router-dom';
+import { createUser } from '../services/userAPI';
 import LoadingText from './Loading';
 
 function Login() {
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -16,7 +18,7 @@ function Login() {
       try {
         await createUser({ name });
         setLoading(false);
-        window.location.href = '/search';
+        navigate('/search');
       } catch (error) {
         setLoading(false);
       }
