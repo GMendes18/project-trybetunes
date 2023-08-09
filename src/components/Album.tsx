@@ -15,6 +15,7 @@ function Album() {
     const fetchAlbumAndSongs = async () => {
       if (typeof id === 'string' && id.length > 0) {
         const [album, ...songsData] = await getMusics(id);
+        console.log(getMusics('1484688048'));
         setAlbumInfo(album);
         setSongs(songsData);
         setLoading(false);
