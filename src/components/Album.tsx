@@ -12,7 +12,7 @@ function Album() {
   const [songs, setSongs] = useState<SongType[]>([]);
 
   useEffect(() => {
-    const fetchAlbumAndSongs = async () => {
+    const getSongs = async () => {
       if (typeof id === 'string' && id.length > 0) {
         const [album, ...songsData] = await getMusics(id);
         console.log(getMusics('1484688048'));
@@ -21,7 +21,7 @@ function Album() {
         setLoading(false);
       }
     };
-    fetchAlbumAndSongs();
+    getSongs();
   }, [id]);
 
   return (
