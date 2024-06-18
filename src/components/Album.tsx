@@ -34,10 +34,10 @@ function Album() {
           <h3 data-testid="album-name">{albumInfo?.collectionName}</h3>
           {songs.map((song) => (
             <MusicCard
-              key={ song.trackId }
-              trackId={ song.trackId }
-              trackName={ song.trackName }
-              previewUrl={ song.previewUrl }
+              key={song.trackId}
+              trackId={song.trackId}
+              trackName={song.trackName}
+              previewUrl={song.previewUrl}
             />
           ))}
         </>

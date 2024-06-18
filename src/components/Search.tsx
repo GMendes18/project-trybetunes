@@ -2,6 +2,7 @@ import { useState } from 'react';
 import searchAlbums from '../services/searchAlbumsAPI';
 import { AlbumType } from '../types';
 import LoadingText from './Loading';
+import { Link } from 'react-router-dom';
 
 function Search() {
   const [artistName, setArtistName] = useState('');
@@ -10,7 +11,7 @@ function Search() {
   const [artist, setArtist] = useState('');
 
   const handleChange = (event:
-  React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setArtistName(event.target.value);
   };
 
@@ -32,17 +33,17 @@ function Search() {
 
   return (
     <div>
-      <form onSubmit={ handleSubmit }>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="artistName"
-          value={ artistName }
+          value={artistName}
           data-testid="search-artist-input"
-          onChange={ handleChange }
+          onChange={handleChange}
         />
         <button
           type="submit"
-          disabled={ artistName.length < 2 }
+          disabled={artistName.length < 2}
           data-testid="search-artist-button"
         >
           Pesquisar
@@ -60,13 +61,13 @@ function Search() {
           </p>
           <ul>
             {albums.map((album) => (
-              <li key={ album.collectionId }>
-                <a
-                  href={ `/album/${album.collectionId}` }
-                  data-testid={ `link-to-album-${album.collectionId}` }
+              <li key={album.collectionId}>
+                <Link
+                  to={`/album/${album.collectionId}`}
+                  data-testid={`link-to-album-${album.collectionId}`}
                 >
                   {album.collectionName}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
